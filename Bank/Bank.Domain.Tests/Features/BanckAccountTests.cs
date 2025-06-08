@@ -79,5 +79,40 @@ namespace Bank.Domain.Tests.Features
         {
             Assert.That(_error, Is.EqualTo(error));
         }
+
+        [When("cancelo la cuenta")]
+public void CuandoCanceloLaCuenta()
+{
+    try
+    {
+        _cuenta.Cancelar();
+    }
+    catch (System.Exception ex)
+    {
+        _esError = true;
+        _error = ex.Message;
+    }
+}
+
+[When("intento retirar (.*)")]
+public void CuandoIntentoRetirar(decimal monto)
+{
+    try
+    {
+        _cuenta.Retirar(monto);
+    }
+    catch (System.Exception ex)
+    {
+        _esError = true;
+        _error = ex.Message;
+    }
+}
+
+[Then("la cuenta debe estar cancelada")]
+public void EntoncesCuentaDebeEstarCancelada()
+{
+Assert.That(_cuenta.Estado, Is.False);
+}
+
     }
 }
