@@ -29,4 +29,5 @@ Scenario: Cliente intenta retirar de cuenta cancelada
     When cancelo la cuenta
     When intento retirar 50
     Then deberia ser error
-    And deberia mostrarse el error: "La cuenta está cancelada"
+    And deberia mostrarse el error: La cuenta está cancelada
+
