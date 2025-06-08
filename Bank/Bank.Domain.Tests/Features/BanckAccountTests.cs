@@ -111,6 +111,7 @@ namespace Bank.Domain.Tests.Features
         [Then("la cuenta debería estar cancelada")]
         public void EntoncesCuentaDebeEstarCancelada()
         {
+            // Asegúrate que 'Estado' sea la propiedad correcta que indica si la cuenta está activa (true) o cancelada (false)
             Assert.That(_cuenta?.Estado, Is.False);
         }
     }
