@@ -18,12 +18,15 @@ Scenario: Cliente retira en su cuenta un monto negativo y es incorrecto
 	Then deberia ser error
 
 Scenario: Cliente cancela su cuenta
-    Given la nueva cuenta numero 123 con saldo 100
+    Given la nueva cuenta numero 123
+    And con saldo 100
     When cancelo la cuenta
-    Then la cuenta debería estar cancelada
+    Then la cuenta debe estar cancelada
 
 Scenario: Cliente intenta retirar de cuenta cancelada
-    Given la nueva cuenta numero 456 con saldo 100
-    And cancelo la cuenta
+    Given la nueva cuenta numero 456
+    And con saldo 100
+    When cancelo la cuenta
     When intento retirar 50
-    Then debería obtener un error indicando que la cuenta está cancelada
+    Then deberia ser error
+    And deberia mostrarse el error: "Cuenta está cancelada"  # Ajusta el mensaje real de error que lanza tu lógica
